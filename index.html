@@ -1,0 +1,76 @@
+<!doctype html>
+<html class="no-js" lang="en" ng-app="gitthingApp">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Gitthing</title>
+	<base href="/index.html">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="/assets/stylesheets/styles.css" />
+
+</head>
+<body>
+<div class="thing">
+	<nav class="navbar navbar-thing navbar-static-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/#!">Git Thing</a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<!--
+				<ul class="nav navbar-nav">
+					<li><a href="#">Link</a></li>
+					<li><a href="#">Link</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+			        <li><a href="#">Jussi Räsänen</a></li>
+			        <li><a href="#">Sign out</a></li>
+			    </ul>
+			    -->
+			</div><!-- /.navbar-collapse -->
+			
+
+		</div><!-- /.container-fluid -->
+	</nav>
+
+	<div id="content" class="container">
+		<div class="row">
+			<div class="main-content col-md-9" ng-view>
+
+			</div> <!-- /.main-content -->
+
+			<div class="col-md-3 aside" ng-controller="RepositoryListingCtrl">
+				<h2>Repositories</h2>
+				<ul class="nav nav-pills nav-stacked">
+					<li ng-repeat="repo in repositories">
+						<a ng-href="#!/repo/{{ repo.permalink }}">{{ repo.name }}</a>
+					</li>
+				</ul>
+				<div style="text-center">
+					<a class="btn btn-primary" href="#">New repository</a>
+				</div>
+			</div> <!-- /.aside -->
+
+		</div>
+	</div>
+</div><!-- /.thing -->
+
+
+<!--
+<script src="/assets/bower_components/angular/angular.js"></script>
+<script src="/assets/bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="/assets/bower_components/angular-resource/angular-resource.js"></script>
+<script src="/assets/bower_components/angular-route/angular-route.js"></script>
+<script src="/assets/javascripts/app/gitthing.controllers.js"></script>
+<script src="/assets/javascripts/app/gitthing.services.js"></script>
+<script src="/assets/javascripts/app/gitthing.js"></script>
+-->
+<script src="/static/app.js"></script>
+</body>
+</html>

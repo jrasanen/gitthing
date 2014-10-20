@@ -1,0 +1,46 @@
+<h1>{{ $scope.repo.name }}</h1>
+<p class="lead">{{ meta.description }}</p>
+<div class="repo-info">
+	<div class="col-md-4">
+		{{ meta.commit_count }} commits
+	</div>
+	<div class="col-md-4">
+		{{ meta.branches }} branch
+	</div>
+	<div class="col-md-4">
+		1 contributor
+	</div>
+</div>
+
+<div class="content-listing panel panel-info">
+  <div class="panel-heading">{{ latest.message }}</div>
+  <div class="panel-body">
+		
+		<div class="meta clearfix">
+	  		<p class="pull-right">latest commit {{ latest.id.abbrev }}</p>
+	  		<p class="pull-left">
+	  			<a href="#" class="author">{{ latest.author.name }}</a> authored {{ latest.authored_date }}
+	  		</p>
+		</div>
+
+		<div class="inner">
+	  		<table class="table">
+				<tr ng-repeat="item in items">
+					<td ng-switch on="item.type === 'blob'">
+						<a href="#!/repo/{{ permalink }}/blob/master/{{ item.path }}" ng-switch-when="true">
+							<i class="fa fa-file-code-o"></i>
+							{{ item.name }}
+						</a>
+						<a href="#!/repo/{{ permalink }}/tree/master/{{ item.path }}" ng-switch-when="false">
+							<i class="fa fa-folder-o"></i>
+							{{ item.name }}/
+						</a>
+					</td>
+					<td>{{ item.message }}</td>
+					<td class="text-right">{{ authored_date }}</td>
+				</tr>
+			</table>
+		</div>
+
+  </div>
+</div>

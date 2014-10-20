@@ -1,0 +1,38 @@
+<h1>{{ $scope.repo.name }}</h1>
+<p class="lead">Backend for Somanen Web UI and Firebase</p>
+
+<ol class="breadcrumb">
+  <li><a ng-href="#!/repo/{{ repo.permalink }}">{{ repo.name }}</a></li>
+  <li ng-repeat="crumb in breadcrumbs" ng-class="{active: crumb.name == currentTree}">
+  	<span ng-switch="crumb.name === currentTree">
+	    <span ng-switch-when="true">
+	        {{ crumb.name }}
+	    </span>
+	    <span ng-switch-default>
+	        <a ng-href="#!{{ crumb.target }}">{{ crumb.name }}</a>
+	    </span>
+	</span>
+  </li>
+</ol>
+<div class="row">
+
+	<div class="col-md-12">
+		<table class="table">
+			<tr ng-repeat="item in items">
+				<td ng-switch on="item.type === 'blob'">
+					<a ng-href="#!/repo/{{ repo.permalink }}/blob/master/{{ item.path }}" ng-switch-when="true">
+						<i class="fa fa-file-code-o"></i>
+						{{ item.name }}
+					</a>
+					<a ng-href="#!/repo/{{ repo.permalink }}/tree/master/{{ item.path }}" ng-switch-when="false">
+						<i class="fa fa-folder-o"></i>
+						{{ item.name }}/
+					</a>
+				</td>
+				<td>{{ item.message }}</td>
+				<td class="text-right">{{ item.authored_date }}</td>
+			</tr>
+		</table>
+	</div>
+
+</div>
